@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation | Welcome</title>
+    <link rel="stylesheet" href="../foundation/css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h1 class="centered">Trello Quickpost</h1>
+      </div>
+    </div>
+
+    <div class="not-authed">
+      <div class="row">
+        <div class="large-12 columns centered">
+          <p>Please log in at the <a target="_blank" href="/settings/index.html">settings page</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="authed">
+      <div class="large-12 columns centered">
+        <a id="username" class="button tiny" href="#" target="_blank">@user</a>
+        <a class="button tiny warning" href="/settings/index.html" target="_blank">Log out</a>
+      </div>
+
+      <form>
+        <div class="row">
+          <div class="small-6 columns">
+            <label class="">Board
+              <select id="board"></select>
+            </label>
+          </div>
+
+          <div class="small-6 columns">
+            <label class="">List
+              <select id="list"></select>
+            </label>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="small-12 columns">
+            <label>URL
+              <input id="url" type="text" placeholder="Web address">
+            </label>
+          </div>
+        </div>
+
+        <!-- =
+        <div class="row">
+          <div class="small-6 columns">
+            <label>Task #
+              <input id="tasknum" type="text" placeholder="optional">
+            </label>
+          </div>
+          <div class="small-6 columns">
+            <label>other thing
+              <input id="thing" type="text" placeholder="">
+            </label>
+          </div>
+        </div>
+        -->
+
+        <div class="row">
+          <div class="small-12 columns">
+            <label>Synopsis
+              <input id="title" type="text" placeholder="">
+            </label>
+          </div>
+          <div class="small-12 columns">
+            <label>Description
+              <textarea id="desc" placeholder=""></textarea>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-12 columns">
+            <a id="submit" href="#" class="button success expanded">Submit Card</a>
+          </div>
+        </div>
+
+      </form>
+
+
+    </div><!-- .authed -->
+
+    <script src="../scripts/key.js"></script>
+    <script src="../foundation/js/vendor/jquery.min.js"></script>
+    <script src="../lib/trello_client.js"></script>
+    <script src="../foundation/js/vendor/what-input.min.js"></script>
+    <script src="../foundation/js/foundation.min.js"></script>
+    <script src="js/popup.js"></script>
+  </body>
+</html>

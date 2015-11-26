@@ -1,0 +1,27 @@
+body{ min-width:300px; padding:10px 0; }
+.centered{ text-align: center;}
+.authed{ display: none; }
+
+[type="text"],
+[type="password"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="month"],
+[type="week"],
+[type="email"],
+[type="number"],
+[type="search"],
+[type="tel"],
+[type="time"],
+[type="url"],
+[type="color"],
+textarea{
+    height:1.4375rem;
+    font-size:0.8rem;
+}
+select{
+    height:2.0rem;
+    padding:0.1rem 0.5rem;
+    font-size:0.8rem;
+}

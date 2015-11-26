@@ -1,0 +1,33 @@
+{
+	"name": "Limbic Trello Quickpost",
+	"version": "0.1",
+	"manifest_version" : 2,
+	"description": "A quick way to open cards in Trello with an aim at bug reporting",
+	"background" : {
+		"page" : "background.html"
+	},
+	"browser_action" :
+	{
+		"default_icon": "icons/limbic_40px.png",
+		"default_title" : "Trello Quickpost",
+		"default_popup" : "popup/popup.html"
+	},
+	"content_scripts": [
+	{
+		"matches": ["http://*/*"],
+		"js": ["lib/jquery-2.1.1.min.js","scripts/main.js"],
+		"run_at": "document_idle"
+	}
+	],
+	"icons": {
+		"48": "icons/limbic_40px.png"
+	},
+	"web_accessible_resources": [
+		"popup/popup.html",
+        "settings/index.html"
+    ],
+    "permissions": [
+	   "tabs"
+	],
+    "options_page": "settings/index.html"
+}
