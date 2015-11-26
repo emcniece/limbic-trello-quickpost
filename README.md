@@ -17,3 +17,8 @@ Issues or suggestions? [Post them here](/issues/)!
 
 - Add option for default board/list
 - Store previously retrieved settings in localStorage
+- Add loading graphic while submitting
+- Show message for successful post (link to card?)
+- Clear form after successful post
+- Load usernames for tagging / referencing
+- Load labels/colors available for board
