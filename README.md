@@ -12,3 +12,8 @@ This Chrome extension provides a toolbar button that allows users to quickly and
 The Limbic Media icon should now be visible in your toolbar - click it to log in with Trello!
 
 Issues or suggestions? [Post them here](/issues/)!
+
+## Todo
+
+- Add option for default board/list
+- Store previously retrieved settings in localStorage
