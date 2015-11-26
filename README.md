@@ -22,3 +22,5 @@ Issues or suggestions? [Post them here](/issues/)!
 - Clear form after successful post
 - Load usernames for tagging / referencing
 - Load labels/colors available for board
+- Add option for auto-populating URL
+- Add option for enabling/disabling fields (URL, task #, version, etc)
