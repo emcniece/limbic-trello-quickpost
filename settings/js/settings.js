@@ -19,11 +19,7 @@ function init() {
     }
 
     // If we have a token, set up our API call auths
-    if (localStorage.trello_token) {
-        isAuthed = true;
-        Trello.setToken( localStorage.trello_token);
-        console.log( 'Authed!', APP_KEY, localStorage.trello_token);
-    }
+    ltApi.auth();
 
     // Message and button containers
     var $lout = $("#trello_helper_loggedout");
@@ -53,16 +49,18 @@ function init() {
         location.reload();
     });
 
-    if (!isAuthed) {
+    if (!ltApi.auth() ) {
         $lout.show();
         $lin.hide();
-    } else {
-        $lout.hide();
-        Trello.members.get('me', function(data){
-            console.log(data);
-            $('.user_name').text( data.username);
-        });
-        $lin.show();
+        return;
     }
+
+    ltApi.getMe(function(me){
+        //$('.user_name').text( me.username);
+        $lout.hide();
+        $lin.show();
+    });
+
+    ltApi.getBoards(function(data){ console.log( 'complete'); });
 }
 $(document).ready(init);

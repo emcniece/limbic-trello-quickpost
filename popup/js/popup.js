@@ -2,15 +2,23 @@ function init(){
     Trello.setKey(APP_KEY);
 
     // If we have a token, set up our API call auths
-    if (localStorage.trello_token) {
+    /*if (localStorage.trello_token) {
         isAuthed = true;
         Trello.setToken( localStorage.trello_token);
         $('.not-authed').hide();
         $('.authed').show();
     }
+    */
+
+    ltApi.auth(function(token){
+        if( token){
+            $('.not-authed').hide();
+            $('.authed').show();
+        }
+    });
 
     // AUTH ONLY BELOW HERE!
-    if( !isAuthed) return;
+    if( !ltApi.auth() ) return;
 
     Trello.members.get('me', function(data){
         $('#username').text( '@'+data.username);
@@ -18,7 +26,7 @@ function init(){
     });
 
     Trello.members.get('me/boards', function(data){
-console.log(data);
+
         // Get all boards
         data.forEach(function(board, i){
             if(board.closed === false){
@@ -79,7 +87,7 @@ function getBoardLists(bID, updateLists){
                 }
             });
         }
-console.log(data);
+        console.log(data);
         return data;
     });
 }

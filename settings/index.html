@@ -1,39 +1,74 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Trello Helper Settings</title>
-    <link rel="stylesheet" href="../foundation/css/foundation.css"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Limbic Trello Settings</title>
+  <link rel="stylesheet" href="../foundation/css/foundation.css"/>
 </head>
 <body>
 
 <div class="row">
-    <div class="large-12 columns">
-        <h1>Limbic Trello Quickpost Settings</h1>
-    </div>
+  <div class="large-12 columns">
+    <h1>Limbic Trello Quickpost Settings</h1>
+  </div>
 </div>
 
 <div class="row">
-    <div class="large-12 columns">
-        <div class="panel" id="trello_helper_loggedout" style="display: none">
-            <p>To get going, you'll need to authorize the extension to use your Trello account.</p>
-
-            <p>Do it by clicking the big Authorize button below.</p>
-
-            <a href="#" class="medium success button" id="trello_helper_login">Authorize</a><br/>
+  <div class="large-12 columns">
+    <div class="callout alert" id="trello_helper_loggedout" style="display: none">
+      <div class="row">
+        <div class="medium-10 columns">
+          <p>To get going, you'll need to authorize the extension to use your Trello account.</p>
         </div>
-        <div class="panel" id="trello_helper_loggedin" style="display: none">
-            <p>Hi @<span class="user_name">dude</span>! You are already authorized. If something doesn't work, try logging out using the button below, and logging back in.</p>
-
-            <a href="#" class="medium warning button" id="trello_helper_logout">Log out</a><br/>
+        <div class="medium-2 columns">
+          <a href="#" class="medium alert hollow button" id="trello_helper_login">Authorize</a>
         </div>
-
+      </div>
     </div>
+
+    <div class="callout success" id="trello_helper_loggedin" style="display: none">
+      <div class="row">
+        <div class="medium-10 columns">
+          <p>Hi @<span data-service="trello" data-model="user" data-text="username">dude</span>! You are already authorized. If something doesn't work, try logging out using the button below, and logging back in.</p>
+        </div>
+        <div class="medium-2 columns">
+          <a href="#" class="medium secondary hollow button" id="trello_helper_logout">Log out</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<script src="../scripts/key.js"></script>
+<form id="settings">
+  <div class="row">
+    <div class="medium-12 columns">
+      <h3>Settings</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 columns">
+      <label>Default Board
+        <select data-service="trello" data-model="boards" data-append data-template='<option value="{{id}}">{{name}}</option>'>
+          <option value="last">-- Last Board Used --</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="medium-6 columns">
+      <!--
+      <label>Input Label
+        <input type="text" placeholder=".medium-6.columns">
+      </label>
+      -->
+    </div>
+  </div>
+</form>
+
 <script src="../foundation/js/vendor/jquery.min.js"></script>
+<script src="../scripts/key.js"></script>
+<script src="../scripts/apis.js"></script>
 <script src="../lib/trello_client.js"></script>
 <script src="../lib/hashsearch.js"></script>
 <script src="js/settings.js"></script>
