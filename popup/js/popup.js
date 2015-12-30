@@ -1,14 +1,4 @@
 function init(){
-    Trello.setKey(APP_KEY);
-
-    // If we have a token, set up our API call auths
-    /*if (localStorage.trello_token) {
-        isAuthed = true;
-        Trello.setToken( localStorage.trello_token);
-        $('.not-authed').hide();
-        $('.authed').show();
-    }
-    */
 
     ltApi.auth(function(token){
         if( token){
@@ -20,30 +10,10 @@ function init(){
     // AUTH ONLY BELOW HERE!
     if( !ltApi.auth() ) return;
 
-    Trello.members.get('me', function(data){
-        $('#username').text( '@'+data.username);
-        $('#username').attr('href', data.url);
-    });
+    ltApi.getMe();
+    ltApi.getBoards();
 
-    Trello.members.get('me/boards', function(data){
 
-        // Get all boards
-        data.forEach(function(board, i){
-            if(board.closed === false){
-                $('#board').append('<option value="'+board.id+'">'+board.name+'</option>');
-            }
-        });
-
-        // Load lists for first board
-        var fBId = $('#board option:first-child').val();
-        var lists = getBoardLists(fBId, true);
-    });
-
-    // Action bindings
-    $('#board').on('change', function(){
-        var bID = $(this).val();
-        getBoardLists( bID, true);
-    });
 
     // Set current URL
     chrome.tabs.query({'active': true, 'lastFocusedWindow': true, 'currentWindow': true}, function (tabs) {
@@ -74,22 +44,5 @@ function init(){
     });
 }
 
-function getBoardLists(bID, updateLists){
-    if( !bID) return null;
-
-    Trello.boards.get( bID+'/lists', function(data){
-
-        if( true === updateLists){
-            $('#list').html('');
-            data.forEach(function(list){
-                if( list.closed === false){
-                    $('#list').append('<option value="'+list.id+'">'+list.name+'</option>');
-                }
-            });
-        }
-        console.log(data);
-        return data;
-    });
-}
 
 $(document).ready(init);

@@ -56,11 +56,46 @@ function init() {
     }
 
     ltApi.getMe(function(me){
-        //$('.user_name').text( me.username);
         $lout.hide();
         $lin.show();
     });
 
-    ltApi.getBoards(function(data){ console.log( 'complete'); });
+    ltApi.getBoards();
+    //ltApi.getLists();
+
 }
 $(document).ready(init);
+
+
+
+
+/* REMOVE WHEN DONE DEV */
+function reloadOnChange(url, checkIntervalMS) {
+    if (!window.__watchedFiles) {
+        window.__watchedFiles = {};
+    }
+
+    (function() {
+        var self = arguments.callee;
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if (__watchedFiles[url] &&
+                    __watchedFiles[url] != xhr.responseText) {
+                    window.location.reload();
+                } else {
+                    __watchedFiles[url] = xhr.responseText
+                    window.setTimeout(self, checkIntervalMS || 1000);
+                }
+            }
+        };
+
+        xhr.open("GET", url, true);
+        xhr.send();
+    })();
+}
+
+reloadOnChange(chrome.extension.getURL('/scripts/apis.js'));
+reloadOnChange(chrome.extension.getURL('/settings/index.html'));
+reloadOnChange(chrome.extension.getURL('/settings/js/settings.js'));

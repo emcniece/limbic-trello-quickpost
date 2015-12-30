@@ -50,18 +50,24 @@
   <div class="row">
     <div class="medium-6 columns">
       <label>Default Board
-        <select data-service="trello" data-model="boards" data-append data-template='<option value="{{id}}">{{name}}</option>'>
-          <option value="last">-- Last Board Used --</option>
+        <select name="defaultBoard" data-service="trello" data-setting data-active data-model="boards" data-append data-template='<option value="{{id}}">{{name}}</option>'>
+          <option value="{{lastBoard}}">-- Last Board Used --</option>
         </select>
       </label>
     </div>
 
     <div class="medium-6 columns">
-      <!--
-      <label>Input Label
-        <input type="text" placeholder=".medium-6.columns">
+      <label>List Preview
+        <select name="listPreview" data-service="trello" data-bind="[name='defaultBoard']" data-model="lists" data-template='<option value="{{id}}">{{name}}</option>'>
+        </select>
       </label>
-      -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <label>Text Input
+        <input type="text" name="textInput" data-setting data-active data-text>
+      </label>
     </div>
   </div>
 </form>

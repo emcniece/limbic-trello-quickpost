@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation | Welcome</title>
+    <title>Limbic Trello</title>
     <link rel="stylesheet" href="../foundation/css/foundation.css" />
     <link rel="stylesheet" href="css/app.css" />
   </head>
@@ -26,7 +26,7 @@
 
     <div class="authed">
       <div class="large-12 columns centered">
-        <a id="username" class="button tiny" href="#" target="_blank">@user</a>
+        <a id="username" class="button tiny" href="{{url}}" target="_blank" data-service="trello" data-model="user" data-text="username">@user</a>
         <a class="button tiny warning" href="/settings/index.html" target="_blank">Log out</a>
       </div>
 
@@ -34,13 +34,13 @@
         <div class="row">
           <div class="small-6 columns">
             <label class="">Board
-              <select id="board"></select>
+              <select name="lastBoard" data-setting data-default="{{defaultBoard}}" data-service="trello" data-model="boards" data-append data-template='<option value="{{id}}">{{name}}</option>'></select>
             </label>
           </div>
 
           <div class="small-6 columns">
             <label class="">List
-              <select id="list"></select>
+              <select name="lastList" data-setting data-bind="[name='lastBoard']" data-service="trello" data-model="lists" data-template='<option value="{{id}}">{{name}}</option>'></select>
             </label>
           </div>
 
